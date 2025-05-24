@@ -31,3 +31,55 @@ local keymap = vim.keymap
 keymap.set("n", "<leader>sv", ":vsplit<CR>", { noremap = true, silent = true })
 keymap.set("i", "jk", "<ESC>", { desc = "Exit insert mode with jk" })
 keymap.set("i", "jj", "<ESC>", { desc = "Exit insert mode with jk" })
+
+-- Language-specific indentation settings
+vim.api.nvim_create_augroup("FileTypeIndentation", { clear = true })
+
+-- Languages that typically use 4 spaces
+vim.api.nvim_create_autocmd("FileType", {
+	group = "FileTypeIndentation",
+	pattern = { "python", "java", "c", "cpp", "php", "cs" },
+	callback = function()
+		vim.bo.tabstop = 4
+		vim.bo.softtabstop = 4
+		vim.bo.shiftwidth = 4
+		vim.bo.expandtab = true
+	end,
+})
+
+-- Go uses tabs by convention
+vim.api.nvim_create_autocmd("FileType", {
+	group = "FileTypeIndentation",
+	pattern = "go",
+	callback = function()
+		vim.bo.tabstop = 4
+		vim.bo.softtabstop = 4
+		vim.bo.shiftwidth = 4
+		vim.bo.expandtab = false -- Go uses tabs
+	end,
+})
+
+-- Languages that typically use 2 spaces
+vim.api.nvim_create_autocmd("FileType", {
+	group = "FileTypeIndentation",
+	pattern = {
+		"javascript",
+		"typescript",
+		"json",
+		"yaml",
+		"yml",
+		"html",
+		"css",
+		"scss",
+		"lua",
+		"vim",
+		"terraform",
+		"hcl",
+	},
+	callback = function()
+		vim.bo.tabstop = 2
+		vim.bo.softtabstop = 2
+		vim.bo.shiftwidth = 2
+		vim.bo.expandtab = true
+	end,
+})

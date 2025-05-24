@@ -15,7 +15,7 @@ return {
 
 		"hrsh7th/nvim-cmp",
 		dependencies = {
-			"Snikimonkd/cmp-go-pkgs",
+			--			"Snikimonkd/cmp-go-pkgs",
 
 			-- sourcescmp
 			"hrsh7th/cmp-nvim-lsp",
@@ -44,7 +44,7 @@ return {
 			cmp.setup({
 				completion = {
 					completeopt = "menu,menuone,preview",
-					preselect = 'item',
+					preselect = "item",
 				},
 				snippet = { -- configure how nvim-cmp interacts with snippet engine
 					expand = function(args)

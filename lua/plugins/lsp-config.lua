@@ -14,12 +14,24 @@ return {
 					"gopls",
 					"terraformls",
 					"zls",
-					"angular-language-server",
-					"typescript-language-server",
-					"css-lsp",
-					"html-lsp",
+					"angularls",
+					"ts_ls",
+					"cssls",
+					"html",
+				},
+			})
+		end,
+	},
+	{
+		"WhoIsSethDaniel/mason-tool-installer.nvim",
+		config = function()
+			require("mason-tool-installer").setup({
+				ensure_installed = {
 					"prettier",
 					"eslint_d",
+					"stylua",
+					"delve",
+					"golangci-lint",
 				},
 			})
 		end,
@@ -178,7 +190,29 @@ return {
 		"seblyng/roslyn.nvim",
 		ft = "cs",
 		opts = {
-			-- your configuration comes here; leave empty for default settings
+			config = {
+				settings = {
+					["csharp|inlay_hints"] = {
+						csharp_enable_inlay_hints_for_implicit_object_creation = true,
+						csharp_enable_inlay_hints_for_implicit_variable_types = true,
+						csharp_enable_inlay_hints_for_lambda_parameter_types = true,
+						csharp_enable_inlay_hints_for_types = true,
+						dotnet_enable_inlay_hints_for_indexer_parameters = true,
+						dotnet_enable_inlay_hints_for_literal_parameters = true,
+						dotnet_enable_inlay_hints_for_object_creation_parameters = true,
+						dotnet_enable_inlay_hints_for_other_parameters = true,
+						dotnet_enable_inlay_hints_for_parameters = true,
+						-- The following suppress hints in certain cases, set to false if you want more hints
+						dotnet_suppress_inlay_hints_for_parameters_that_differ_only_by_suffix = true,
+						dotnet_suppress_inlay_hints_for_parameters_that_match_argument_name = true,
+						dotnet_suppress_inlay_hints_for_parameters_that_match_method_intent = true,
+					},
+					-- You can add other settings groups here if needed, e.g.:
+					-- ["csharp|code_lens"] = {
+					--   dotnet_enable_references_code_lens = true,
+					-- },
+				},
+			},
 		},
 	},
 }
