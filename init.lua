@@ -35,7 +35,6 @@ keymap.set("i", "jj", "<ESC>", { desc = "Exit insert mode with jk" })
 -- Language-specific indentation settings
 vim.api.nvim_create_augroup("FileTypeIndentation", { clear = true })
 
--- Languages that typically use 4 spaces
 vim.api.nvim_create_autocmd("FileType", {
 	group = "FileTypeIndentation",
 	pattern = { "python", "java", "c", "cpp", "php", "cs" },
@@ -47,7 +46,6 @@ vim.api.nvim_create_autocmd("FileType", {
 	end,
 })
 
--- Go uses tabs by convention
 vim.api.nvim_create_autocmd("FileType", {
 	group = "FileTypeIndentation",
 	pattern = "go",
@@ -59,7 +57,6 @@ vim.api.nvim_create_autocmd("FileType", {
 	end,
 })
 
--- Languages that typically use 2 spaces
 vim.api.nvim_create_autocmd("FileType", {
 	group = "FileTypeIndentation",
 	pattern = {
