@@ -1,0 +1,35 @@
+linters:
+  disable:
+    - govet  # Disable govet since gopls LSP already provides this
+  enable:
+    - errcheck
+    - gosimple
+    - goconst
+    - gocyclo
+    - gofmt
+    - goimports
+    - revive
+    - staticcheck
+    - typecheck
+    - unused
+    - ineffassign
+    - misspell
+
+linters-settings:
+  revive:
+    rules:
+      - name: exported
+        disabled: false
+      - name: var-naming
+        disabled: false
+      - name: package-comments
+        disabled: true
+
+run:
+  timeout: 5m
+  tests: true
+
+issues:
+  exclude-use-default: false
+  max-issues-per-linter: 0
+  max-same-issues: 0 
